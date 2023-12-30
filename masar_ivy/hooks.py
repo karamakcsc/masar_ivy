@@ -213,3 +213,13 @@ app_license = "MIT"
 # auth_hooks = [
 #	"masar_ivy.auth.validate"
 # ]
+fixtures = [
+    {"dt": "Custom Field", "filters": [
+        [
+            "name", "in", [
+    			"Customer-custom_trade_name"
+
+                  ]
+        ]
+    ]}
+]
