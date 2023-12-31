@@ -123,6 +123,9 @@ app_license = "MIT"
 #		"on_trash": "method"
 #	}
 # }
+doctype_js = {
+    "Payment Entry" : "custom/payment_entry/payment_entry.js"
+}
 
 # Scheduled Tasks
 # ---------------
