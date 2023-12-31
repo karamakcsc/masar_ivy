@@ -217,7 +217,8 @@ fixtures = [
     {"dt": "Custom Field", "filters": [
         [
             "name", "in", [
-    			"Customer-custom_trade_name"
+    			"Customer-custom_trade_name",
+                "Payment Entry-payment_type"
 
                   ]
         ]
