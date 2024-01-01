@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "field:id",
  "creation": "2024-01-01 16:10:06.214885",
@@ -38,7 +39,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-01-01 16:12:04.120345",
+ "modified": "2024-01-01 16:28:06.734957",
  "modified_by": "Administrator",
  "module": "MASAR IVY",
  "name": "Item Type",
