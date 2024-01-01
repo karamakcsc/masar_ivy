@@ -195,22 +195,25 @@
 // }
 
 
-frappe.ui.form.on("Sales Order","after_save", function(frm) {
-    if(frm.doc.docstatus !=1){
-      var df=frappe.meta.get_docfield("Sales Order", "reserve_stock",frm.doc.name);
-      df.read_only=1;
-    frm.set_value('reserve_stock', 1);
+frappe.ui.form.on("Sales Order", {
+    onload: function(frm) {
+        customizeReserveStockField(frm);
+    },
+
+    refresh: function(frm) {
+        customizeReserveStockField(frm);
+    },
+
+    after_save: function(frm) {
+        customizeReserveStockField(frm);
     }
 });
 
+function customizeReserveStockField(frm) {
+    if (frm.doc.docstatus != 1) {
+        var df = frappe.meta.get_docfield("Sales Order", "reserve_stock", frm.doc.name);
+        df.read_only = 1;
+        frm.set_value('reserve_stock', 1);
+    }
+}
 
-
-// frappe.ui.form.on('Sales Order', 'onload', function(frm,cdt, cdn) {
-//     cur_frm.fields_dict['items'].grid.get_field("item_code").get_query = function(frm,cdt,cdn){
-//     var d = locals[cdt][cdn];
-//     var price_list = cur_frm.selling_price_list;
-//     return {
-//     filters:{ "price_list": selling_price_list}
-//     }
-//     }
-//     });
