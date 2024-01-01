@@ -234,3 +234,27 @@ frappe.ui.form.on('Sales Order', {
         
     }
 });
+
+frappe.ui.form.on('Sales Order', {
+    refresh: function(frm) {
+        if (!frm._add_multiple) {
+            frm._add_multiple = 1;
+            var grid = frm.get_field('items').grid;
+            var link_field = frappe.meta.get_docfield(grid.df.options, 'item_code');
+    		var btn = $(grid.wrapper).find('.grid-add-multiple-rows');
+    		btn.removeClass('hidden').toggle(true);
+    		btn.on('click', function() {
+    			new frappe.ui.form.LinkSelector({
+    				doctype: link_field.options,
+    				fieldname: 'item_code',
+    				qty_fieldname: '',
+    				get_query: link_field.get_query,
+    				target: grid,
+    				txt: ''
+    			});
+    			grid.grid_pagination.go_to_last_page_to_add_row();
+    			return false;
+    		});
+        }
+    }
+});
