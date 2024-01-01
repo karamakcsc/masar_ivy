@@ -124,7 +124,8 @@ app_license = "MIT"
 #	}
 # }
 doctype_js = {
-    "Payment Entry" : "custom/payment_entry/payment_entry.js"
+    "Payment Entry" : "custom/payment_entry/payment_entry.js",
+    "Item" : "custom/item/item.js"
 }
 
 # Scheduled Tasks
