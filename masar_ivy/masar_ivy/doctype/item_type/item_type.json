@@ -9,8 +9,7 @@
  "field_order": [
   "id",
   "column_break_fftm",
-  "date",
-  "is_enable"
+  "date"
  ],
  "fields": [
   {
@@ -18,12 +17,6 @@
    "fieldtype": "Data",
    "label": "ID",
    "unique": 1
-  },
-  {
-   "default": "0",
-   "fieldname": "is_enable",
-   "fieldtype": "Check",
-   "label": "Enable"
   },
   {
    "default": "Today",
@@ -39,7 +32,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-01-01 16:28:06.734957",
+ "modified": "2024-01-01 16:34:14.819686",
  "modified_by": "Administrator",
  "module": "MASAR IVY",
  "name": "Item Type",
