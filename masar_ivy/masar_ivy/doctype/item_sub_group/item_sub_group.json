@@ -9,7 +9,8 @@
  "field_order": [
   "id",
   "column_break_mrxj",
-  "date"
+  "date",
+  "is_enable"
  ],
  "fields": [
   {
@@ -28,11 +29,17 @@
   {
    "fieldname": "column_break_mrxj",
    "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_enable",
+   "fieldtype": "Check",
+   "label": "Enable"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-01-01 16:34:05.745998",
+ "modified": "2024-01-01 16:39:29.309975",
  "modified_by": "Administrator",
  "module": "MASAR IVY",
  "name": "Item Sub Group",

@@ -9,7 +9,8 @@
  "field_order": [
   "id",
   "column_break_vhlg",
-  "date"
+  "date",
+  "is_enable"
  ],
  "fields": [
   {
@@ -28,11 +29,17 @@
    "fieldtype": "Date",
    "label": "Date",
    "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_enable",
+   "fieldtype": "Check",
+   "label": "Enable"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-01-01 16:34:21.289662",
+ "modified": "2024-01-01 16:38:37.570038",
  "modified_by": "Administrator",
  "module": "MASAR IVY",
  "name": "Item System",
