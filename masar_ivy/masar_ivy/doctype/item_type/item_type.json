@@ -31,7 +31,7 @@
    "fieldtype": "Column Break"
   },
   {
-   "default": "0",
+   "default": "1",
    "fieldname": "is_enable",
    "fieldtype": "Check",
    "label": "Enable"
@@ -39,7 +39,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-01-01 16:39:04.468579",
+ "modified": "2024-01-01 16:43:56.164786",
  "modified_by": "Administrator",
  "module": "MASAR IVY",
  "name": "Item Type",
