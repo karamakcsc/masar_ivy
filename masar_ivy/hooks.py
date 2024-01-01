@@ -221,7 +221,10 @@ fixtures = [
     {"dt": "Custom Field", "filters": [
         [
             "name", "in", [
-    			"Customer-custom_trade_name"
+    			"Customer-custom_trade_name",
+                "Item-custom_item_sub_group",
+                "Item-custom_item_system",
+                "Item-custom_item_type"
 
                   ]
         ]
