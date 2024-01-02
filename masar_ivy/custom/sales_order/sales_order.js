@@ -234,3 +234,21 @@ function customSalesOrderType(frm) {
         frm.set_value('order_type', "Sales");
     }
 }
+
+
+////////////////////////////
+frappe.ui.form.on("Sales Order", {
+    before_submit: function(frm) {
+        customizeStopSO(frm);
+    }
+});
+
+function customizeStopSO(frm) {
+    $.each(frm.doc.items || [], function(i, item) {
+        if (item.qty > item.projected_qty) {
+            frappe.msgprint(__("STOP: Quantity should not exceed actual quantity."));
+            frappe.validated = false;
+            return false; 
+        }
+    });
+}
