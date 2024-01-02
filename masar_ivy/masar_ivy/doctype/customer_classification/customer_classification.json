@@ -7,6 +7,7 @@
  "engine": "InnoDB",
  "field_order": [
   "customer_classification_section",
+  "series",
   "id",
   "column_break_acpj",
   "date",
@@ -18,7 +19,9 @@
   {
    "fieldname": "id",
    "fieldtype": "Data",
-   "label": "ID",
+   "in_list_view": 1,
+   "label": "Customer Classification Name",
+   "reqd": 1,
    "unique": 1
   },
   {
@@ -53,11 +56,17 @@
    "fieldname": "is_enable",
    "fieldtype": "Check",
    "label": "Enable"
+  },
+  {
+   "fieldname": "series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "CUST-CC-.YYYY.-"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-01-03 02:06:46.325670",
+ "modified": "2024-01-03 02:17:31.297664",
  "modified_by": "Administrator",
  "module": "MASAR IVY",
  "name": "Customer Classification",
