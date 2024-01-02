@@ -199,7 +199,7 @@
   "name": "Sales Order-custom_sales_order_type",
   "no_copy": 0,
   "non_negative": 0,
-  "options": "\nSales\nMaintenance\nShopping Cart\nDelivery Note\nTrial\nSample",
+  "options": "Sales\nMaintenance\nShopping Cart\nDelivery Note\nTrial\nSample",
   "permlevel": 0,
   "precision": "",
   "print_hide": 0,
