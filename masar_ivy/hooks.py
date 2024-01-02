@@ -227,7 +227,8 @@ fixtures = [
                 "Item-custom_item_sub_group",
                 "Item-custom_item_system",
                 "Item-custom_item_type",
-                "Sales Order-custom_sales_order_type"
+                "Sales Order-custom_sales_order_type",
+                "Customer-custom_customer_classification"
 
                   ]
         ]
