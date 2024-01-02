@@ -194,24 +194,43 @@
 //     dialog.show();
 // }
 
+
 frappe.ui.form.on("Sales Order", {
     onload: function(frm) {
         customizeReserveStockField(frm);
+        customSalesOrderType(frm);
     },
 
     refresh: function(frm) {
         customizeReserveStockField(frm);
+        customSalesOrderType(frm);
     },
 
     after_save: function(frm) {
         customizeReserveStockField(frm);
-    }
+        customSalesOrderType(frm);
+    },
+
+    custom_sales_order_type: function(frm) {
+        customSalesOrderType(frm);
+    },
 });
 
 function customizeReserveStockField(frm) {
-    if (frm.doc.docstatus != 1) {
-        var df = frappe.meta.get_docfield("Sales Order", "reserve_stock", frm.doc.name);
-        df.read_only = 1;
-        frm.set_value('reserve_stock', 1);
+    var df = frappe.meta.get_docfield("Sales Order", "reserve_stock", frm.doc.name);
+    df.read_only = 1;
+    frm.set_value('reserve_stock', 1);
+    frm.set_value('set_warehouse', "Main Stock - IVY");
+    frm.toggle_display("order_type", false);
+}
+
+function customSalesOrderType(frm) {
+    var df = frappe.meta.get_docfield("Sales Order", "order_type", frm.doc.name);
+    df.read_only = 1; 
+    if (frm.doc.custom_sales_order_type != "Delivery Note"){
+    frm.set_value('order_type', frm.doc.custom_sales_order_type);
+    }
+    else {
+        frm.set_value('order_type', "");
     }
 }
