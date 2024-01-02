@@ -9,7 +9,10 @@
   "customer_classification_section",
   "id",
   "column_break_acpj",
-  "date"
+  "date",
+  "is_enable",
+  "section_break_g9cf",
+  "description"
  ],
  "fields": [
   {
@@ -33,11 +36,28 @@
    "fieldname": "customer_classification_section",
    "fieldtype": "Section Break",
    "label": "Customer Classification"
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "collapsible": 1,
+   "fieldname": "section_break_g9cf",
+   "fieldtype": "Section Break",
+   "label": "Description"
+  },
+  {
+   "default": "1",
+   "fieldname": "is_enable",
+   "fieldtype": "Check",
+   "label": "Enable"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-01-03 01:58:05.144405",
+ "modified": "2024-01-03 02:06:46.325670",
  "modified_by": "Administrator",
  "module": "MASAR IVY",
  "name": "Customer Classification",
