@@ -236,7 +236,7 @@ function customSalesOrderType(frm) {
 }
 
 
-////////////////////////////
+///////////Stop SO///////////////
 frappe.ui.form.on("Sales Order", {
     before_submit: function(frm) {
         customizeStopSO(frm);
