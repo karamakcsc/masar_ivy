@@ -227,7 +227,7 @@ function customizeReserveStockField(frm) {
 function customSalesOrderType(frm) {
     var df = frappe.meta.get_docfield("Sales Order", "order_type", frm.doc.name);
     df.read_only = 1; 
-    if (frm.doc.custom_sales_order_type != "Delivery Note" && frm.doc.custom_sales_order_type != "Trial" && frm.doc.custom_sales_order_type != "Sample" && frm.doc.custom_sales_order_type != "Installation"){
+    if (frm.doc.custom_sales_order_type == "Sales" || frm.doc.custom_sales_order_type == "Maintenance" || frm.doc.custom_sales_order_type == "Shopping Cart"){
     frm.set_value('order_type', frm.doc.custom_sales_order_type);
     }
     else {
