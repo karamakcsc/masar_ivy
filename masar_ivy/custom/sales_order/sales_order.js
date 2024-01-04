@@ -48,7 +48,7 @@ frappe.ui.form.on("Sales Order", {
 
 function StopSO(frm) {
     $.each(frm.doc.items || [], function(i, item) {
-        if (item.qty > item.projected_qty) {
+        if (item.qty > item.actual_qty) {
             frappe.msgprint(__("STOP: Quantity should not exceed actual quantity."));
             frappe.validated = false;
             return false; 
