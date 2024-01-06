@@ -39,24 +39,31 @@ function SalesOrderType(frm) {
 }
 
 
-///////////Stop SO///////////////SIAM
+
 // frappe.ui.form.on("Sales Order", {
-//     before_submit: function(frm) {
-//         StopSO(frm);
+//     customer: function(frm) {
+//         insertpricelist(frm);
+//     },
+//     before_save: function(frm) {
+//         insertpricelist(frm);
+//     },
+//     onload: function(frm) {
+//         insertpricelist(frm);
 //     }
 // });
 
-// function StopSO(frm) {
+// function insertpricelist(frm) {
 //     $.each(frm.doc.items || [], function(i, item) {
-//         if (item.qty > item.actual_qty) {
-//             frappe.msgprint(__("STOP: Quantity should not exceed actual quantity."));
-//             frappe.validated = false;
-//             return false; 
+//         if (item.item_code) {
+//             item.custom_price_list = frm.doc.selling_price_list;
 //         }
 //     });
+//     refresh_field("items");
 // }
 
 
+
+///////////Stop SO///////////////SIAM
 frappe.ui.form.on("Sales Order", {
     before_submit: function (frm) {
         StopSO(frm);
