@@ -234,5 +234,17 @@ fixtures = [
 
                   ]
         ]
-    ]}
+    ]},
+    {
+        "doctype": "Property Setter",
+        "filters": [
+            [
+                "name",
+                "in",
+                [
+                    "Payment Entry-payment_type-options"
+                ]
+            ]
+        ]
+    }
 ]

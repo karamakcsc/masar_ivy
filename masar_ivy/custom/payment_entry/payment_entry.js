@@ -7,6 +7,10 @@ frappe.ui.form.on("Payment Entry","payment_type", function(frm) {
       frm.set_value('naming_series', 'ACC-PAY-.YYYY.-')
       frm.refresh_fields();
     }
+    else if (frm.doc.payment_type == "CN"){
+      frm.set_value('naming_series', 'ACC-CN-.YYYY.-')
+      frm.refresh_fields();
+    }
     });
 
     frappe.ui.form.on("Payment Entry",{ before_load:function(frm) {
