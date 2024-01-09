@@ -20,3 +20,39 @@ frappe.ui.form.on("Payment Entry","payment_type", function(frm) {
     }
     });
     ///////Siam///////
+frappe.ui.form.on("Payment Entry", {
+  setup: function(frm) {
+      frm.set_query("paid_to", function() {
+          frm.events.validate_company(frm);
+
+          var account_types = in_list(["Receive", "Internal Transfer"], frm.doc.payment_type) ?
+              [] : [];
+          return {
+              filters: {
+                  // "account_type": ["in", account_types],
+                  "is_group": 0,
+                  "company": frm.doc.company
+              }
+          };
+      });
+  }
+});
+
+frappe.ui.form.on("Payment Entry", {
+  setup: function(frm) {
+      frm.set_query("paid_from", function() {
+          frm.events.validate_company(frm);
+
+          var account_types = in_list(["Receive", "Internal Transfer"], frm.doc.payment_type) ?
+              [] : [];
+          return {
+              filters: {
+                  // "account_type": ["in", account_types],
+                  "is_group": 0,
+                  "company": frm.doc.company
+              }
+          };
+      });
+  }
+});
+
