@@ -242,7 +242,9 @@ fixtures = [
                 "name",
                 "in",
                 [
-                    "Payment Entry-payment_type-options"
+                    "Payment Entry-payment_type-options",
+                    "Payment Entry-reference_date-mandatory_depends_on",
+                    "Payment Entry-reference_no-mandatory_depends_on"
                 ]
             ]
         ]
