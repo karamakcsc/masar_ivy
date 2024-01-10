@@ -1,22 +1,15 @@
 frappe.ui.form.on("Sales Order", {
     onload: function(frm) {
         ReserveStockField(frm);
-        SalesOrderType(frm);
     },
 
     refresh: function(frm) {
         ReserveStockField(frm);
-        SalesOrderType(frm);
     },
 
     after_save: function(frm) {
         ReserveStockField(frm);
-        SalesOrderType(frm);
-    },
-
-    custom_sales_order_type: function(frm) {
-        SalesOrderType(frm);
-    },
+    }
 });
 
 function ReserveStockField(frm) {
@@ -24,43 +17,8 @@ function ReserveStockField(frm) {
     df.read_only = 1;
     frm.set_value('reserve_stock', 1);
     frm.set_value('set_warehouse', "Main Stock - IVY");
-    frm.toggle_display("order_type", false);
+    // frm.toggle_display("order_type", false);
 }
-
-function SalesOrderType(frm) {
-    var df = frappe.meta.get_docfield("Sales Order", "order_type", frm.doc.name);
-    df.read_only = 1; 
-    if (frm.doc.custom_sales_order_type == "Sales" || frm.doc.custom_sales_order_type == "Maintenance" || frm.doc.custom_sales_order_type == "Shopping Cart"){
-    frm.set_value('order_type', frm.doc.custom_sales_order_type);
-    }
-    else {
-        frm.set_value('order_type', "Sales");
-    }
-}
-
-
-
-// frappe.ui.form.on("Sales Order", {
-//     customer: function(frm) {
-//         insertpricelist(frm);
-//     },
-//     before_save: function(frm) {
-//         insertpricelist(frm);
-//     },
-//     onload: function(frm) {
-//         insertpricelist(frm);
-//     }
-// });
-
-// function insertpricelist(frm) {
-//     $.each(frm.doc.items || [], function(i, item) {
-//         if (item.item_code) {
-//             item.custom_price_list = frm.doc.selling_price_list;
-//         }
-//     });
-//     refresh_field("items");
-// }
-
 
 
 ///////////Stop SO///////////////SIAM

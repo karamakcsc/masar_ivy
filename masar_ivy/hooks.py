@@ -228,9 +228,15 @@ fixtures = [
                 "Item-custom_item_sub_group",
                 "Item-custom_item_system",
                 "Item-custom_item_type",
-                "Sales Order-custom_sales_order_type",
                 "Customer-custom_customer_classification",
-                "Item-custom_available_qty"
+                "Item-custom_available_qty",
+                "Sales Order-custom_party_type",
+                "Sales Order-custom_supplier",
+                "Sales Order-custom_supplier_name",
+                "Sales Order-custom_employee",
+                "Sales Order-custom_employee_name",
+                "Sales Order-custom_lead",
+                "Sales Order-custom_lead_name"
 
                   ]
         ]
@@ -244,7 +250,11 @@ fixtures = [
                 [
                     "Payment Entry-payment_type-options",
                     "Payment Entry-reference_date-mandatory_depends_on",
-                    "Payment Entry-reference_no-mandatory_depends_on"
+                    "Payment Entry-reference_no-mandatory_depends_on",
+                    "Sales Order-order_type-options",
+                    "Sales Order-customer-mandatory_depends_on",
+                    "Sales Order-customer-depends_on",
+                    "Sales Order-customer-reqd"
                 ]
             ]
         ]
