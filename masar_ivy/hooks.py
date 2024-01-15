@@ -236,7 +236,8 @@ fixtures = [
                 "Sales Order-custom_employee",
                 "Sales Order-custom_employee_name",
                 "Sales Order-custom_lead",
-                "Sales Order-custom_lead_name"
+                "Sales Order-custom_lead_name",
+                "Supplier-custom_supplier_ar"
 
                   ]
         ]
