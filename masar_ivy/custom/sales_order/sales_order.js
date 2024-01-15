@@ -88,7 +88,11 @@ frappe.ui.form.on("Sales Order", {
 //             selling_price_list : frm.doc.selling_price_list
 //            }, 
 //            callback : function(r){
-//             frappe.msgprint(r.message); 
+//             if (r.message === false) {
+//                 frappe.model.set_value(cdt, cdn, 'item_code', '');
+//                 frappe.msgprint('Item validation failed. Please check the item.')
+                
+//             }
 //            }
 //         });
 //     }
@@ -96,83 +100,3 @@ frappe.ui.form.on("Sales Order", {
 
 
 
-
-// frappe.ui.form.on('Sales Order Item', {
-//     item_code: function (frm, cdt, cdn) {
-//         var d = locals[cdt][cdn];
-//         // if (d.item_code) {
-//             frappe.call({
-//                 method: 'masar_ivy.custom.sales_order.sales_order.select_item',
-//                 args: {
-//                     doctype: 'Sales Order',
-//                     txt: d.item_code,
-//                     searchfield: 'item_code',
-//                     start: 0,
-//                     page_len: 10,
-//                     filters: {
-//                         'selling_price_list': frm.doc.selling_price_list
-//                     }
-//                 },
-//                 callback: function (r) {
-//                     if (r.message.length === 0) {
-//                         frappe.msgprint(__('Item not found in the selected price list.'));
-//                         cur_frm.fields_dict.items.get_query = function (doc, cdt, cdn) {
-//                             return {
-//                                 filters: [
-//                                     ['item_code', 'in', []] 
-//                                 ]
-//                             };
-//                         };
-//                     } else {
-//                         // cur_frm.fields_dict.items.get_query = null;  
-//                         frappe.msgprint(__((r.message)));
-//                     }
-//                 }
-//             });
-//         }
-    
-// });
-
-
-// frappe.ui.form.on('Sales Order Item', {
-//     item_code: function (frm, cdt, cdn) {
-//         var d = locals[cdt][cdn];
-//         if (d.item_code) {
-//             frappe.call({
-//                 method: 'masar_ivy.custom.sales_order.sales_order.select_item',
-//                 args: {
-//                     doctype: 'Sales Order',
-//                     txt: d.item_code,
-//                     searchfield: 'item_code',
-//                     start: 0,
-//                     page_len: 10,
-//                     filters: {
-//                         'selling_price_list': frm.doc.selling_price_list
-//                     }
-//                 },
-//                 callback: function (r) {
-//                     if (r.message) {
-//                         if (Array.isArray(r.message) && r.message.length > 0) {
-//                             // Access the first item in the result list
-//                             var firstItem = r.message[0].item_code;
-//                             console.log('First Item Code:', firstItem);
-
-//                             // Reset the filter
-//                             cur_frm.fields_dict.items.get_query = null;
-//                         } else {
-//                             frappe.msgprint(__('Item not found in the selected price list.'));
-//                             // Set a filter to ensure no items are shown
-//                             cur_frm.fields_dict.items.get_query = function (doc, cdt, cdn) {
-//                                 return {
-//                                     filters: [
-//                                         ['item_code', 'in', []]
-//                                     ]
-//                                 };
-//                             };
-//                         }
-//                     }
-//                 }
-//             });
-//         }
-//     }
-// });
