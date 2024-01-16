@@ -32,6 +32,7 @@ def get_reserved_qty(item_code, warehouse):
 #     result = selling_price_list  in price_list
   
 #     if  not result:
+#         frappe.msgprint('Item validation failed. Please check the item.')
 #         return result
 
   

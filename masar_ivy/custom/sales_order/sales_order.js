@@ -39,8 +39,8 @@ function StopSO(frm) {
             },
             async: false,
             callback: function (r) {
-                if (r.message && item.qty > item.actual_qty + r.message) {
-                    frappe.msgprint(__("STOP: Quantity should not exceed actual quantity."));
+                if (item.qty > item.actual_qty - r.message) {
+                    frappe.msgprint(__("STOP: Quantity should not exceed actual quantity. " + item.item_code));
                     frappe.validated = false;
                     return false;
                 }
@@ -89,9 +89,7 @@ frappe.ui.form.on("Sales Order", {
 //            }, 
 //            callback : function(r){
 //             if (r.message === false) {
-//                 frappe.model.set_value(cdt, cdn, 'item_code', '');
-//                 frappe.msgprint('Item validation failed. Please check the item.')
-                
+//                 frappe.model.set_value(cdt, cdn, 'item_code', '');  
 //             }
 //            }
 //         });
