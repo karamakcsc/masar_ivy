@@ -13,7 +13,7 @@ app_license = "MIT"
 # app_include_js = "/assets/masar_ivy/js/masar_ivy.js"
 
 # include js, css files in header of web template
-# web_include_css = "/assets/masar_ivy/css/masar_ivy.css"
+# web_include_css = "apps/masar_ivy/masar_ivy/public/css/housing_bank.css"
 # web_include_js = "/assets/masar_ivy/js/masar_ivy.js"
 
 # include custom scss in every website theme (without file extension ".scss")
@@ -237,7 +237,9 @@ fixtures = [
                 "Sales Order-custom_employee_name",
                 "Sales Order-custom_lead",
                 "Sales Order-custom_lead_name",
-                "Supplier-custom_supplier_ar"
+                "Supplier-custom_supplier_ar",
+                "Payment Entry-custom_payment_voucher_no",
+                "Payment Entry-custom_section_break_zst8o"
 
                   ]
         ]
