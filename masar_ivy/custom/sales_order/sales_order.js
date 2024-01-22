@@ -139,6 +139,7 @@ frappe.ui.form.on("Sales Order", {
 //         });
 //     }
 // });
-
+//////////// mahmoud code to select item code 
+////////// filters selling price list 
 
 
