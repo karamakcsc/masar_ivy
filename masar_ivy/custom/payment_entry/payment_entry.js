@@ -56,3 +56,12 @@ frappe.ui.form.on("Payment Entry", {
   }
 });
 
+
+
+frappe.ui.form.on("Payment Entry", "party", function(frm) {
+  if (frm.doc.party_type == "Employee") {
+    frappe.msgprint("hi")
+    frm.set_value('paid_to', '10104010006 - الموظفين - IVY');
+    frm.refresh_fields();
+  }
+});
