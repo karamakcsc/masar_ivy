@@ -23,31 +23,47 @@ function ReserveStockField(frm) {
 
 
 // ///////////Stop SO///////////////SIAM
+// frappe.ui.form.on("Sales Order", {
+//     before_submit: function (frm) {
+//         StopSO(frm);
+//     }
+// });
 frappe.ui.form.on("Sales Order", {
     before_submit: function (frm) {
-        StopSO(frm);
-    }
-});
-
-function StopSO(frm) {
-    $.each(frm.doc.items || [], function (i, item) {
         frappe.call({
             method: "masar_ivy.custom.sales_order.sales_order.get_reserved_qty",
             args: {
-                item_code: item.item_code,
-                warehouse: frm.doc.set_warehouse
-            },
-            async: false,
-            callback: function (r) {
-                if (r.message && item.qty > item.actual_qty - r.message) {
-                    frappe.msgprint(__("STOP: Quantity should not exceed actual quantity " + item.item_code+"."));
+                name: frm.doc.name, 
+                // item_code: item.item_code,
+                // warehouse: frm.doc.set_warehouse
+  
+            }, 
+            callback:function(r){
+                if (r.message.value == 1){
+                frappe.msgprint("STOP: Quantity should not exceed actual quantity " + r.message.code+".");
                     frappe.validated = false;
                     return false;
                 }
+                
             }
         });
-    });
-}
+    }
+});
+
+// function StopSO(frm) {
+//     $.each(frm.doc.items || [], function (i, item) {
+//         frappe.call({
+//             method: "masar_ivy.custom.sales_order.sales_order.get_reserved_qty",
+//             args: {
+//                 name: frm.doc.name, 
+//                 item_code: item.item_code,
+//                 warehouse: frm.doc.set_warehouse
+//                 // qty : item.qty , 
+//                 // actual_qty : item.actual_qty
+//             }
+//         });
+//     });
+// }
 
 // ///////////Stop SO///////////////SIAM
 

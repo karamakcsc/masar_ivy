@@ -129,7 +129,7 @@ doctype_js = {
     "Sales Order" : "custom/sales_order/sales_order.js",
     "Sales Invoice" : "custom/sales_invoice/sales_invoice.js",
     "Customer" : "custom/customer/customer.js",
-    # "Delivery Note" : "custom/delivery_note/delivery_note.js",
+    #"Delivery Note" : "custom/delivery_note/delivery_note.js",
 }
 
 # Scheduled Tasks
@@ -231,13 +231,13 @@ fixtures = [
                 "Item-custom_item_type",
                 "Customer-custom_customer_classification",
                 "Item-custom_available_qty",
-                "Sales Order-custom_party_type",
-                "Sales Order-custom_supplier",
-                "Sales Order-custom_supplier_name",
-                "Sales Order-custom_employee",
-                "Sales Order-custom_employee_name",
-                "Sales Order-custom_lead",
-                "Sales Order-custom_lead_name",
+                # "Sales Order-custom_party_type",
+                # "Sales Order-custom_supplier",
+                # "Sales Order-custom_supplier_name",
+                # "Sales Order-custom_employee",
+                # "Sales Order-custom_employee_name",
+                # "Sales Order-custom_lead",
+                # "Sales Order-custom_lead_name",
                 "Supplier-custom_supplier_ar",
                 "Payment Entry-custom_payment_voucher_no",
                 "Payment Entry-custom_section_break_zst8o"
@@ -256,11 +256,17 @@ fixtures = [
                     "Payment Entry-reference_date-mandatory_depends_on",
                     "Payment Entry-reference_no-mandatory_depends_on",
                     "Sales Order-order_type-options",
-                    "Sales Order-customer-mandatory_depends_on",
-                    "Sales Order-customer-depends_on",
-                    "Sales Order-customer-reqd"
+                    # "Sales Order-customer-mandatory_depends_on",
+                    # "Sales Order-customer-depends_on",
+                    # "Sales Order-customer-reqd"
                 ]
             ]
         ]
     }
 ]
+
+
+
+# from masar_ivy.override import _stock_controller
+# from erpnext.controllers.stock_controller import StockController
+# StockController.get_gl_entries = _stock_controller.get_gl_entries
