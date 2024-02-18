@@ -15,14 +15,14 @@ def get_reserved_qty(name):
     """, (name), as_dict=True)
 
     for item in data:
-        reserved_qty = frappe.db.sql("""
-            SELECT tb.reserved_qty 
+        reserved_stock = frappe.db.sql("""
+            SELECT tb.reserved_stock
             FROM `tabBin` tb
             WHERE tb.item_code = %s AND tb.warehouse = %s
         """, (item.get('item_code'), item.get('warehouse')), as_list=True)
 
-        reserved_qty = float(reserved_qty[0][0])
-        if item.get('qty') > (item.get('actual_qty') - reserved_qty):
+        reserved_stock = float(reserved_stock[0][0])
+        if item.get('qty') > (item.get('actual_qty') - reserved_stock):
             frappe.throw(f"STOP: Quantity should not exceed actual quantity {item.get('item_code')}.")
         else:
             # Log a message or raise a ValidationError if needed
