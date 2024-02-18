@@ -13,21 +13,23 @@ def get_reserved_qty(name):
         INNER JOIN `tabSales Order Item` tsoi ON tsoi.parent = tso.name
         WHERE tso.name = %s
     """, (name), as_dict=True)
-
+    # frappe.msgprint (str(data),"siam")
     for item in data:
         reserved_stock = frappe.db.sql("""
             SELECT tb.reserved_stock
             FROM `tabBin` tb
             WHERE tb.item_code = %s AND tb.warehouse = %s
         """, (item.get('item_code'), item.get('warehouse')), as_list=True)
+        # frappe.throw(str(reserved_stock))
+        if reserved_stock:
+            reserved_stock = float(reserved_stock[0][0])
+        else:
+            frappe.throw(f"Waring: {item.get('item_code')} should have Reservered Stock .")
 
-        reserved_stock = float(reserved_stock[0][0])
         if item.get('qty') > (item.get('actual_qty') - reserved_stock):
             frappe.throw(f"STOP: Quantity should not exceed actual quantity {item.get('item_code')}.")
         else:
-            # Log a message or raise a ValidationError if needed
-            pass
-
+            None
 
 
 
