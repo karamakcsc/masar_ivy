@@ -1,40 +1,20 @@
+
+from __future__ import unicode_literals
 import frappe
-from frappe.model.document import Document
-#Stop SO ##SIAM
-def on_submit(self,name):
-    get_reserved_qty(self.name)
+from erpnext.stock.stock_balance import get_balance_qty_from_sle
+from frappe import _
 
-@frappe.whitelist()
-def get_reserved_qty(name):
-    # Fetching the length of the table matching the sales order name and item code
-    data = frappe.db.sql("""
-        SELECT tsoi.item_code, tsoi.warehouse, tsoi.qty, tsoi.actual_qty
-        FROM `tabSales Order` tso 
-        INNER JOIN `tabSales Order Item` tsoi ON tsoi.parent = tso.name
-        WHERE tso.name = %s
-    """, (name), as_dict=True)
-    # frappe.msgprint (str(data),"siam")
-    for item in data:
-        reserved_stock = frappe.db.sql("""
-            SELECT tb.reserved_stock
-            FROM `tabBin` tb
-            WHERE tb.item_code = %s AND tb.warehouse = %s
-        """, (item.get('item_code'), item.get('warehouse')), as_list=True)
-        # frappe.throw(str(reserved_stock))
-        if reserved_stock:
-            reserved_stock = float(reserved_stock[0][0])
-        else:
-            frappe.throw(f"Waring: {item.get('item_code')} should have Reservered Stock .")
+def validate_stock_availability(doc, method):
+    for item in doc.items:
+        item_code = item.item_code
+        warehouse = item.warehouse or doc.set_warehouse
+        actual_qty = get_balance_qty_from_sle(item_code, warehouse)
+        reserved_qty = frappe.db.get_value('Bin', {'item_code': item_code, 'warehouse': warehouse}, 'reserved_qty') or 0
 
-        if item.get('qty') > (item.get('actual_qty') - reserved_stock):
-            frappe.throw(f"STOP: Quantity should not exceed actual quantity {item.get('item_code')}.")
-        else:
-            None
-
-
-
-
-
+        if actual_qty - reserved_qty <= 0:
+            frappe.throw(_("Item {0} in warehouse {1} does not have enough stock. Actual Qty: {2}, Reserved Qty: {3}").format(
+                frappe.bold(item_code), frappe.bold(warehouse), actual_qty, reserved_qty))
+            
 # //////////// mahmoud code to select item code 
 @frappe.whitelist()
 def select_item(doctype, txt, searchfield, start, page_len, filters):
