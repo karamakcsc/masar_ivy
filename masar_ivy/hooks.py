@@ -116,13 +116,18 @@ app_license = "MIT"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-#	"*": {
-#		"on_update": "method",
-#		"on_cancel": "method",
-#		"on_trash": "method"
-#	}
-# }
+doc_events = {
+	# "*": {
+	# 	"on_update": "method",
+	# 	"on_cancel": "method",
+	# 	"on_trash": "method"
+	# }
+    	"Sales Order": {
+		# "on_update": "method",
+		"on_submit": "masar_ivy.custom.sales_order.sales_order.on_submit"
+		# "on_trash": "method"
+	}
+}
 doctype_js = {
     "Payment Entry" : "custom/payment_entry/payment_entry.js",
     "Item" : "custom/item/item.js",

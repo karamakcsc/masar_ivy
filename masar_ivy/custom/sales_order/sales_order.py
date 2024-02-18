@@ -1,30 +1,33 @@
 import frappe
+from frappe.model.document import Document
+#Stop SO ##SIAM
+def on_submit(self,name):
+    get_reserved_qty(self.name)
 
 @frappe.whitelist()
 def get_reserved_qty(name):
     # Fetching the length of the table matching the sales order name and item code
     data = frappe.db.sql("""
-        SELECT tsoi.item_code,  tsoi.warehouse ,  tsoi.qty , tsoi.actual_qty  
+        SELECT tsoi.item_code, tsoi.warehouse, tsoi.qty, tsoi.actual_qty
         FROM `tabSales Order` tso 
         INNER JOIN `tabSales Order Item` tsoi ON tsoi.parent = tso.name
         WHERE tso.name = %s
-    """ , (name), as_dict = True)
+    """, (name), as_dict=True)
+
     for item in data:
         reserved_qty = frappe.db.sql("""
-        SELECT tb.reserved_qty 
+            SELECT tb.reserved_qty 
             FROM `tabBin` tb
             WHERE tb.item_code = %s AND tb.warehouse = %s
-        """ , (item.get('item_code') , item.get('warehouse')), as_list = True)
+        """, (item.get('item_code'), item.get('warehouse')), as_list=True)
+
         reserved_qty = float(reserved_qty[0][0])
-        if item.get('qty') >  item.get('actual_qty') - reserved_qty :
-            return  {
-                "value": 1 , 
-                "code" :item.get('item_code')
-                }
-        else: 
-            return {
-                "value": 0 
-                }  
+        if item.get('qty') > (item.get('actual_qty') - reserved_qty):
+            frappe.throw(f"STOP: Quantity should not exceed actual quantity {item.get('item_code')}.")
+        else:
+            # Log a message or raise a ValidationError if needed
+            pass
+
 
 
 
