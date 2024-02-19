@@ -11,7 +11,7 @@ def validate_stock_availability(doc, method):
         actual_qty = get_balance_qty_from_sle(item_code, warehouse)
         reserved_stock = frappe.db.get_value('Bin', {'item_code': item_code, 'warehouse': warehouse}, 'reserved_stock') or 0
 
-        if actual_qty - reserved_stock <= 0:
+        if actual_qty - reserved_stock < 0:
             frappe.throw(_("Item {0} in warehouse {1} does not have enough stock. Actual Qty: {2}, Reserved Stock: {3}").format(
                 frappe.bold(item_code), frappe.bold(warehouse), actual_qty, reserved_stock))
             
