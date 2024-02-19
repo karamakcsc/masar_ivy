@@ -121,7 +121,7 @@ doc_events = {
 	# 	"on_update": "method",
 	# 	"on_cancel": "method",
 	# 	"on_trash": "method"
-	# }
+	# }#####
     	"Sales Order": {
 		# "on_update": "method",
 		"on_submit": "masar_ivy.custom.sales_order.sales_order.validate_stock_availability"
