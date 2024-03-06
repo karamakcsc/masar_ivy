@@ -20,7 +20,7 @@ frappe.ui.form.on("Sales Invoice","onload", function(frm) {
 
 frappe.ui.form.on("Sales Invoice", {
   onload: function (frm) {
-    if (frm.doc.is_return ==1 || frm.doc.docstatus !=1) {
+    if (frm.doc.is_return ==1 && frm.doc.docstatus !=1) {
       frm.set_value('naming_series', 'ACC-SINV-RET-.YYYY.-');
       frm.set_value('set_warehouse', "Main Stock - IVY");
       var df=frappe.meta.get_docfield("Sales Invoice", "set_warehouse",frm.doc.name);
@@ -34,7 +34,7 @@ frappe.ui.form.on("Sales Invoice", {
      refresh_field("set_warehouse");
   },
   is_return: function (frm) {
-    if (frm.doc.is_return ==1 || frm.doc.docstatus !=1) {
+    if (frm.doc.is_return ==1 && frm.doc.docstatus !=1) {
       frm.set_value('naming_series', 'ACC-SINV-RET-.YYYY.-');
       frm.set_value('set_warehouse', "Main Stock - IVY");
       var df=frappe.meta.get_docfield("Sales Invoice", "set_warehouse",frm.doc.name);
@@ -48,7 +48,7 @@ frappe.ui.form.on("Sales Invoice", {
     refresh_field("set_warehouse");
   },
   refresh: function (frm) {
-    if (frm.doc.is_return ==1 || frm.doc.docstatus !=1) {
+    if (frm.doc.is_return ==1 && frm.doc.docstatus !=1) {
       frm.set_value('naming_series', 'ACC-SINV-RET-.YYYY.-');
       frm.set_value('set_warehouse', "Main Stock - IVY");
       var df=frappe.meta.get_docfield("Sales Invoice", "set_warehouse",frm.doc.name);
