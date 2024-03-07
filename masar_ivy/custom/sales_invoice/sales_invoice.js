@@ -18,47 +18,38 @@ frappe.ui.form.on("Sales Invoice","onload", function(frm) {
   }
   });
 
-frappe.ui.form.on("Sales Invoice", {
-  onload: function (frm) {
-    if (frm.doc.is_return ==1 && frm.doc.docstatus !=1) {
-      frm.set_value('naming_series', 'ACC-SINV-RET-.YYYY.-');
-      frm.set_value('set_warehouse', "Main Stock - IVY");
-      var df=frappe.meta.get_docfield("Sales Invoice", "set_warehouse",frm.doc.name);
-      df.read_only=1;
-  }
-  else {
-    frm.set_value('naming_series', 'ACC-SINV-.YYYY.-')
-    frm.set_value('set_warehouse', "Main Stock - IVY");
-     }
-     refresh_field("naming_series");
-     refresh_field("set_warehouse");
-  },
-  is_return: function (frm) {
-    if (frm.doc.is_return ==1 && frm.doc.docstatus !=1) {
-      frm.set_value('naming_series', 'ACC-SINV-RET-.YYYY.-');
-      frm.set_value('set_warehouse', "Main Stock - IVY");
-      var df=frappe.meta.get_docfield("Sales Invoice", "set_warehouse",frm.doc.name);
-      df.read_only=1;
-  }
-  else {
-    frm.set_value('naming_series', 'ACC-SINV-.YYYY.-')
-    frm.set_value('set_warehouse', "Main Stock - IVY");
-     }
-    refresh_field("naming_series");
-    refresh_field("set_warehouse");
-  },
-  refresh: function (frm) {
-    if (frm.doc.is_return ==1 && frm.doc.docstatus !=1) {
-      frm.set_value('naming_series', 'ACC-SINV-RET-.YYYY.-');
-      frm.set_value('set_warehouse', "Main Stock - IVY");
-      var df=frappe.meta.get_docfield("Sales Invoice", "set_warehouse",frm.doc.name);
-      df.read_only=1;
-  }
-  else {
-    frm.set_value('naming_series', 'ACC-SINV-.YYYY.-')
-    frm.set_value('set_warehouse', "Main Stock - IVY");
-     }
-    refresh_field("naming_series");
-    refresh_field("set_warehouse");
-  }
+  frappe.ui.form.on("Sales Invoice", {
+    onload: function (frm) {
+        setValues(frm);
+    },
+    is_return: function (frm) {
+        setValues(frm);
+    },
+    refresh: function (frm) {
+        setValues(frm);
+    },
 });
+
+function setValues(frm) {
+  if (frm.doc.docstatus !== 1) {
+      if (frm.doc.is_return == 1) {
+          frm.set_value('naming_series', 'ACC-SINV-RET-.YYYY.-');
+          frm.set_value('set_warehouse', "Main Stock - IVY");
+          frm.set_df_property('set_warehouse', 'read_only', true);
+      } else {
+          frm.set_value('naming_series', 'ACC-SINV-RET-.YYYY.-');
+          frm.set_value('set_warehouse', "Main Stock - IVY");
+          frm.set_df_property('set_warehouse', 'read_only', false);
+      }
+  } else if(frm.doc.docstatus != 1) {
+      frm.set_value('naming_series', 'ACC-SINV-RET-.YYYY.-');
+      frm.set_value('set_warehouse', "Main Stock - IVY");
+      frm.set_df_property('set_warehouse', 'read_only', false);
+  }
+  
+  frm.refresh_fields(["naming_series", "set_warehouse"]).then(() => {
+      frm.reload_doc();
+  });
+}
+
+
