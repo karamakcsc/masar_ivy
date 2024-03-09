@@ -31,7 +31,7 @@ frappe.ui.form.on("Sales Invoice","onload", function(frm) {
 });
 
 function setValues(frm) {
-  if (frm.doc.docstatus !== 1) {
+  if (frm.doc.docstatus ==0) {
       if (frm.doc.is_return == 1) {
           frm.set_value('naming_series', 'ACC-SINV-RET-.YYYY.-');
           frm.set_value('set_warehouse', "Main Stock - IVY");
@@ -41,7 +41,7 @@ function setValues(frm) {
           frm.set_value('set_warehouse', "Main Stock - IVY");
           frm.set_df_property('set_warehouse', 'read_only', false);
       }
-  } else if(frm.doc.docstatus != 1) {
+  } else if(frm.doc.docstatus ==0) {
       frm.set_value('naming_series', 'ACC-SINV-.YYYY.-');
       frm.set_value('set_warehouse', "Main Stock - IVY");
       frm.set_df_property('set_warehouse', 'read_only', false);
