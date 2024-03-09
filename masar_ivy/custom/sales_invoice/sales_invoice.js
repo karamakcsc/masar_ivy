@@ -37,12 +37,12 @@ function setValues(frm) {
           frm.set_value('set_warehouse', "Main Stock - IVY");
           frm.set_df_property('set_warehouse', 'read_only', true);
       } else {
-          frm.set_value('naming_series', 'ACC-SINV-RET-.YYYY.-');
+          frm.set_value('naming_series', 'ACC-SINV-.YYYY.-');
           frm.set_value('set_warehouse', "Main Stock - IVY");
           frm.set_df_property('set_warehouse', 'read_only', false);
       }
   } else if(frm.doc.docstatus != 1) {
-      frm.set_value('naming_series', 'ACC-SINV-RET-.YYYY.-');
+      frm.set_value('naming_series', 'ACC-SINV-.YYYY.-');
       frm.set_value('set_warehouse', "Main Stock - IVY");
       frm.set_df_property('set_warehouse', 'read_only', false);
   }
