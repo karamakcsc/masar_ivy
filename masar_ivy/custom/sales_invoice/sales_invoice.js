@@ -47,9 +47,7 @@ function setValues(frm) {
       frm.set_df_property('set_warehouse', 'read_only', false);
   }
   
-  frm.refresh_fields(["naming_series", "set_warehouse"]).then(() => {
-      frm.reload_doc();
-  });
+  frm.refresh_fields(["naming_series", "set_warehouse"]);
 }
 
 
