@@ -240,7 +240,8 @@ fixtures = [
                 "Supplier-custom_supplier_ar",
                 "Payment Entry-custom_payment_voucher_no",
                 "Payment Entry-custom_section_break_zst8o",
-                "Account-custom_account_level"
+                "Account-custom_account_level",
+                "Journal Entry Account-custom_party_name"
 
                   ]
         ]
