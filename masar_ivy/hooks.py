@@ -241,7 +241,11 @@ fixtures = [
                 "Payment Entry-custom_payment_voucher_no",
                 "Payment Entry-custom_section_break_zst8o",
                 "Account-custom_account_level",
-                "Journal Entry Account-custom_party_name"
+                "Journal Entry Account-custom_party_name",
+                "Customer-custom_employee_id",
+                "Customer-custom_employee_name",
+                "Sales Invoice-custom_employee_id",
+                "Sales Invoice-custom_employee_name"
 
                   ]
         ]
@@ -265,6 +269,6 @@ fixtures = [
 
 
 
-# from masar_ivy.override import _stock_controller
-# from erpnext.controllers.stock_controller import StockController
-# StockController.get_gl_entries = _stock_controller.get_gl_entries
+from masar_ivy.override import _stock_controller
+from erpnext.controllers.stock_controller import StockController
+StockController.check_expense_account = _stock_controller.check_expense_account

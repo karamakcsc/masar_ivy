@@ -13,7 +13,7 @@ frappe.ui.form.on("Sales Invoice","onload", function(frm) {
   if (frappe.user.has_role('Update Stock - IVY') && frm.doc.docstatus !=1){
         var df=frappe.meta.get_docfield("Sales Invoice", "update_stock",frm.doc.name);
         df.read_only=0;
-      frm.set_value('update_stock', 0);
+      frm.set_value('update_stock', 1);
       frm.set_value('set_warehouse', "Main Stock - IVY");
   }
   });
@@ -51,3 +51,19 @@ function setValues(frm) {
 }
 
 
+frappe.ui.form.on('Sales Invoice', {
+    on_submit: function(frm) {
+        if(frm.doc.customer_group == "Employees"){
+        frappe.call({
+            method: "masar_ivy.custom.sales_invoice.sales_invoice.create_jv",
+            args: {
+                doc: frm.doc
+            },
+            callback: function(r) {   
+                console.log(r.message);
+                frappe.msgprint(r.message);   
+            }
+        });
+    }
+    }
+});
