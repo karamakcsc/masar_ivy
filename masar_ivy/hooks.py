@@ -126,6 +126,11 @@ doc_events = {
 		# "on_update": "method",
 		"on_submit": "masar_ivy.custom.sales_order.sales_order.validate_stock_availability"
 		# "on_trash": "method"
+	},
+    "Sales Invoice": {
+		# "validate": "method",
+		"on_submit": "masar_ivy.custom.sales_invoice.sales_invoice.on_submit"
+		# "on_trash": "method"
 	}
 }
 doctype_js = {

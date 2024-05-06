@@ -67,3 +67,30 @@ frappe.ui.form.on('Sales Invoice', {
     }
     }
 });
+frappe.ui.form.on('Sales Invoice', {
+    tax_category: function(frm) {
+        updateIncomeAccount(frm);
+    },
+    taxes_and_charges: function(frm) {
+        updateIncomeAccount(frm);
+    },
+    validate: function(frm) {
+        updateIncomeAccount(frm);
+    }
+});
+function updateIncomeAccount(frm) {
+    frappe.call({
+        method: "masar_ivy.custom.sales_invoice.sales_invoice.tax_free_sales",
+        args:{
+            tax_category: frm.doc.tax_category,
+            taxes_and_charges: frm.doc.taxes_and_charges
+        },
+        callback: function(r) {
+            frm.doc.items.forEach(function(row) {
+                frappe.model.set_value(row.doctype, row.name, "income_account", r.message);
+            });
+            frm.refresh_fields();
+        }
+    });
+}
+
