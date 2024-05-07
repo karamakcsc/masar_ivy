@@ -19,7 +19,7 @@ frappe.ui.form.on("Payment Entry","payment_type", function(frm) {
     frm.refresh_fields();
     }
     });
-    ///////Siam///////
+    ///////Siam////////
 frappe.ui.form.on("Payment Entry", {
   setup: function(frm) {
       frm.set_query("paid_to", function() {
