@@ -31,6 +31,8 @@ def tax_free_sales(tax_category = None , taxes_and_charges = None ):
     if tax_category and taxes_and_charges:
         if tax_category == 'معفي' and taxes_and_charges == '0 % - IVY':
             return '50102010001 - المبيعات معفاه من الضريبة - IVY'
+    else:
+        pass
 
 
 @frappe.whitelist()

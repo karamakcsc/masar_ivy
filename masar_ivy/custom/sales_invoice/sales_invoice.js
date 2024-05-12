@@ -86,10 +86,13 @@ function updateIncomeAccount(frm) {
             taxes_and_charges: frm.doc.taxes_and_charges
         },
         callback: function(r) {
-            frm.doc.items.forEach(function(row) {
-                frappe.model.set_value(row.doctype, row.name, "income_account", r.message);
-            });
-            frm.refresh_fields();
+            if (r.message){
+                frm.doc.items.forEach(function(row) {
+                    frappe.model.set_value(row.doctype, row.name, "income_account", r.message);
+                });
+                frm.refresh_fields();
+            }
+           
         }
     });
 }
