@@ -3,7 +3,8 @@ import frappe
 
 
 def on_submit(self , method):
-    check_zero_qty_for_items(self)    
+    pass
+    # check_zero_qty_for_items(self)    
     
 
 
