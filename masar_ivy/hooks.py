@@ -124,7 +124,7 @@ doc_events = {
 	# }#####
     	"Sales Order": {
 		# "on_update": "method",
-		"on_submit": "masar_ivy.custom.sales_order.sales_order.validate_stock_availability"
+		"on_submit": "masar_ivy.custom.sales_order.sales_order.on_submit"
 		# "on_trash": "method"
 	},
     "Sales Invoice": {
@@ -250,7 +250,10 @@ fixtures = [
                 "Customer-custom_employee_id",
                 "Customer-custom_employee_name",
                 "Sales Invoice-custom_employee_id",
-                "Sales Invoice-custom_employee_name"
+                "Sales Invoice-custom_employee_name",
+                "Employee-custom_health_insurance_amount",
+                "Employee-custom_column_break_kwaba",
+                "Employee-custom_additional_social_security_salary"
 
                   ]
         ]
