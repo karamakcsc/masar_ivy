@@ -131,6 +131,11 @@ doc_events = {
 		# "validate": "method",
 		"on_submit": "masar_ivy.custom.sales_invoice.sales_invoice.on_submit"
 		# "on_trash": "method"
+	},
+	"Employee": {
+		"validate": "masar_ivy.custom.employee.employee.validate"
+		# "on_cancel": "method",
+		# "on_trash": "method"
 	}
 }
 doctype_js = {
@@ -253,8 +258,8 @@ fixtures = [
                 "Sales Invoice-custom_employee_name",
                 "Employee-custom_health_insurance_amount",
                 "Employee-custom_column_break_kwaba",
-                "Employee-custom_additional_social_security_salary"
-
+                "Employee-custom_additional_social_security_salary",
+                "Employee-custom_ss_component"
                   ]
         ]
     ]},
