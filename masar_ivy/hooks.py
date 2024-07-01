@@ -259,7 +259,7 @@ fixtures = [
                 "Employee-custom_health_insurance_amount",
                 "Employee-custom_column_break_kwaba",
                 "Employee-custom_additional_social_security_salary",
-                "Employee-custom_ss_component"
+                "Employee-custom_ss_component",
                   ]
         ]
     ]},
