@@ -15,5 +15,7 @@ def add_ss_value(self):
         rate = float(self.custom_employee_share_rate) / 100
     else:
         rate = float(emp_comp_rate) / 100
+    if contribution in [None , 0]:
+        frappe.throw("Add one of Social Security Salary or Additional Social Security Salary")
     self.custom_ss_component = contribution
-    self.social_security_amount = contribution * rate 
+    self.social_security_amount = contribution * rate
