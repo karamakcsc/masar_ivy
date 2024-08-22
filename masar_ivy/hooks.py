@@ -259,7 +259,10 @@ fixtures = [
                 "Employee-custom_health_insurance_amount",
                 "Employee-custom_column_break_kwaba",
                 "Employee-custom_additional_social_security_salary",
-                "Employee-custom_ss_component"
+                "Employee-custom_ss_component",
+                "Customer-custom_client_support",
+                "Customer-custom_ivy_sales_team",
+                "Customer-custom_ivy_account_manager"
                   ]
         ]
     ]},
@@ -273,7 +276,7 @@ fixtures = [
                     "Payment Entry-payment_type-options",
                     "Payment Entry-reference_date-mandatory_depends_on",
                     "Payment Entry-reference_no-mandatory_depends_on",
-                    "Sales Order-order_type-options"
+                    "Sales Order-order_type-options",
                 ]
             ]
         ]
