@@ -262,7 +262,8 @@ fixtures = [
                 "Employee-custom_ss_component",
                 "Customer-custom_client_support",
                 "Customer-custom_ivy_sales_team",
-                "Customer-custom_ivy_account_manager"
+                "Customer-custom_ivy_account_manager",
+                "Sales Invoice-custom_account_manager_ivy"
                   ]
         ]
     ]},
