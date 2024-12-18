@@ -31,6 +31,7 @@ frappe.ui.form.on("Sales Invoice","onload", function(frm) {
 });
 
 function setValues(frm) {
+    if (!frappe.user.has_role('Update Stock - IVY')){
   if (frm.doc.docstatus ==0) {
       if (frm.doc.is_return == 1) {
           frm.set_value('naming_series', 'ACC-SINV-RET-.YYYY.-');
@@ -49,7 +50,7 @@ function setValues(frm) {
   
   frm.refresh_fields(["naming_series", "set_warehouse"]);
 }
-
+}
 
 frappe.ui.form.on('Sales Invoice', {
     on_submit: function(frm) {
